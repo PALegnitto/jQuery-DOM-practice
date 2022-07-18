@@ -58,15 +58,15 @@
     <div class="row mb-5">
       <div class="col-sm-4">
         Red
-        <input class="form-control" type="number" min="0" max="255" value="255">
+        <input id="red" class="form-control" type="number" min="0" max="255" value="255">
       </div>
       <div class="col-sm-4">
         Blue
-        <input class="form-control" type="number" min="0" max="255" value="255">
+        <input id="blue" class="form-control" type="number" min="0" max="255" value="255">
       </div>
       <div class="col-sm-4">
         Green
-        <input class="form-control" type="number" min="0" max="255" value="255">
+        <input id="green" class="form-control" type="number" min="0" max="255" value="255">
       </div>
     </div>
   </div>
@@ -74,21 +74,47 @@
   <script>
     // Add your code here!
 
+    // Add imgmage-center to images
     $("article img").addClass("image-center");
 
-
+    // remove last p in article
     $("article p:last-child()").remove();
+
     /**getRandomIntInclusive: returns random number between 0 and 100 */
     function getRandomIntInclusive() {
       return Math.floor(Math.random() * (100 - 0 + 1) + 0);
     }
+
+    // Randomly change title size
     const titleSize = getRandomIntInclusive();
     $("#title").css('font-size', `${titleSize}px`);
-    let $listItem = $('<li>');
-    // Best way???
-    $("ol").append($listItem);
-    $listItem.text('I got nothing to say')
 
+    // Best way???
+
+    // Create list item
+    let $listItem = $('<li>');
+    $("ol").append($listItem);
+    $listItem.text('I got nothing to say');
+
+
+    // delete list
+    $("aside").html('<p>I aplogize for my former existance</p>');
+
+    // CHANGE COLOR
+    $('div .row.mb-5').on('change', '.form-control', function (evt) {
+      // get values of ids
+      let r = $('#red').val();
+      let b = $('#blue').val();
+      let g = $('#green').val();
+
+      let backgroundColor = `rgb(${r},${g},${b})`;
+      $('body').css('backgroundColor', backgroundColor);
+    });
+
+    // delete image
+    $('img').on('click', function (evt) {
+      $(evt.target).remove();
+    })
 
   </script>
 </body>
