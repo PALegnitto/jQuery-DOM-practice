@@ -54,7 +54,7 @@
          <span>${ratingVal}</span><button>Delete</button></li>`);
     })
 
-    $("ul").on("click", "li", function (evt) {
+    $("ul").on("click", "button", function (evt) {
         
         $(evt.target).parent().remove()
     })
