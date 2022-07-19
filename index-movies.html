@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@5/dist/css/bootstrap.css">
+  <style>
+    img {
+      max-width: 70%;
+    }
+
+    .image-center {
+      display: block;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center">Movie Form</h1>
+   
+    <div class="row mb-5">
+    <form id="form">
+      <div class="col-sm-4">
+        Title
+        <input id="title" class="form-control" type="text">
+      </div>
+      <div class="col-sm-4">
+        Rating
+        <input id="rating" class="form-control" type="text">
+      </div>
+        <div class="col-sm-4">
+            <button>Submit</button>
+        </div>
+    </form>
+    </div>
+    <div class="row mb-5">
+        <ul>
+        
+        </ul>
+    </div>
+  </div>
+  <script src="https://unpkg.com/jquery"></script>
+  <script>
+
+    $("form").on("submit", function (evt) {
+        evt.preventDefault();
+        const titleVal = $("#title").val();
+        const ratingVal = $("#rating").val();
+
+        $("ul").append(`<li><span>${titleVal}</span>
+         <span>${ratingVal}</span><button>Delete</button></li>`);
+    })
+
+    $("ul").on("click", "li", function (evt) {
+        
+        $(evt.target).parent().remove()
+    })
+
+
+  </script>
+</body>
+
+</html>
+
